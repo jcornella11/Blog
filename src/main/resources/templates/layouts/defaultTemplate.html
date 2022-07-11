@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>The Coffee Stop</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/CSS/theme.css">
+	 
+</head>
+
+<body>
+	<div align="center">
+		<div th:replace="layouts/common :: header">My Header</div>
+
+		<section layout:fragment="content">
+			<p>My Body Contents</p>
+		</section>
+
+		<div th:replace="layouts/common :: footer">My Footer</div>
+	</div>
+
+</body>
+
+</html>

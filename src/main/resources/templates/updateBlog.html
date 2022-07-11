@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<body>
+	<div layout:fragment="content">
+		<div class="container body-content">
+			<div class="container border border-info rounded p-s5 my-5" style="max-width: 400px;">
+				<h3 class="text-center my-5">Update Coffee</h3>
+
+				<!-- Insert th:action th:object for routing -->
+				<form th:action="@{/coffee/doUpdateCoffee}" th:object="${coffeeModel}" method="POST">
+
+					<!-- Insert th:field for name -->
+					<div class="form-row my-2">
+						<div class="col">
+							<input th:class="form-control" th:field="*{name}" type="text" placeholder="Coffee Name"
+								required>
+						</div>
+					</div>
+
+					<!-- Insert th:if and th:error for name error catching if required -->
+					<div class="form-row my-3">
+						<div class="col">
+							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('name')}"
+								th:errors="*{name}" />
+						</div>
+					</div>
+
+					<!-- Insert th:field for companyName -->
+					<div class="form-row my-3">
+						<div class="col">
+							<input class="form-control" th:field="*{companyName}" type="text" placeholder="Company Name"
+								required>
+						</div>
+					</div>
+
+					<!-- Insert th:if and th:error for companyName error catching if required -->
+					<div class="form-row my-3">
+						<div class="col">
+							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('companyName')}"
+								th:errors="*{companyName}" />
+						</div>
+					</div>
+
+					<!-- Insert th:field for companyLocation -->
+					<div class="form-row my-3">
+						<div class="col">
+							<input class="form-control" th:field="*{companyLocation}" type="text"
+								placeholder="Company Location" required>
+						</div>
+					</div>
+
+					<!-- Insert th:if and th:error for companyLocation error catching if required -->
+					<div class="form-row my-3">
+						<div class="col">
+							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('companyLocation')}"
+								th:errors="*{companyLocation}" />
+						</div>
+					</div>
+
+					<!-- Insert th:field for cost -->
+					<div class="form-row my-3">
+						<div class="col">
+							<label class="my-1" for="cost">Cost Per lb.</label>
+						</div>
+						<div class="col">
+							<input class="form-control" th:field="*{cost}" type="text" placeholder="Cost per lb."
+								required/>
+						</div>
+					</div>
+
+					<!-- Insert th:if and th:error for cost error catching if required -->
+					<div class="form-row my-3">
+						<div class="col">
+							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('cost')}"
+								th:errors="*{cost}" />
+						</div>
+					</div>
+
+					<!-- Insert th:field for description -->
+					<div class="form-row my-3">
+						<div class="col">
+							<textarea class="form-control" th:field="*{description}" placeholder="Coffee Description"
+								required />
+						</div>
+					</div>
+
+					<!-- Insert th:if and th:error for description error catching if required -->
+					<div class="form-row my-3">
+						<div class="col">
+							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('description')}"
+								th:errors="*{description}" />
+						</div>
+					</div>
+					<input type="hidden" th:field="*{id}">
+					<input type="submit" value="Update" class="btn btn-info btn-block btn-lg my-4">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

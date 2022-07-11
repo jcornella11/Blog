@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<div class="container">
+				<a href="\" class="navbar-brand">
+					<i class="bi bi-cup"></i>
+					<span class="d-md-none">The Coffee Stop</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mynavbar">
+					<ul class="navbar-nav mr-auto">
+						<li>
+							<div th:if="${session.user != null}" class="dropdown show">
+								<a class="nav-link dropdown-toggle text-white px-0" href="#" role="button"
+									id="dropdownMenuLink" data-toggle="dropdown">
+									Coffee
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="/coffee/">All Coffee</a>
+									<a class="dropdown-item" href="/coffee/addCoffee">Add Coffee</a>
+								</div>
+							</div>
+						</li>
+						<li th:if="${session.user == null}" class="nav-item">
+							<a th:if="${session.user == null}" href="/login/" class="nav-link">Login</a>
+						</li>
+						<li class="nav-item">
+							<a th:if="${session.user == null}" href="/user/register" class="nav-link">Register</a>
+						</li>
+					</ul>
+					<div class="dropdown show">
+					<div th:unless="${session.user != null}">
+						<a class="nav-link dropdown-toggle text-white px-0" href="#" role="button" id="dropdownMenuLink"
+							data-toggle="dropdown">
+							Not Logged In
+						</a>
+						<div class="dropdown-menu">							
+							<a class="dropdown-item" href="/login/">Login</a>
+						</div>
+					</div >
+					<div th:if="${session.user != null}">
+						<a class="nav-link dropdown-toggle text-white px-0" href="#" role="button" id="dropdownMenuLink"
+							data-toggle="dropdown">
+							Logged In
+						</a>
+						<div class="dropdown-menu">							
+							<a class="dropdown-item" href="/logout/">Logout</a>
+						</div>
+					</div >						
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="jumbotron jumbotron fluid">
+			<h1 class="text-center d-none d-md-block">The Coffee Stop</h1>
+		</div>
+	</div>
+
+	<div th:fragment="footer">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</div>
+
+</body>
+
+</html>
