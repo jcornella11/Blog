@@ -6,45 +6,41 @@
 	<div layout:fragment="content">
 		<div class="container">
 			<div class="container border border-info rounded p-s5 my-5" style="max-width: 1000px;">
-				<!-- Button to Go Back to main coffee display page -->
+
 				<div class="form-row my-3">
-						<form th:action="@{/coffee/}">
+						<form th:action="@{/blog/}">
 							<input class="btn btn-sm btn-primary my-1" style="width: 150px;" type="submit"
 							value="<= Go Back">
 						</form>
 					</div>
-					<!-- Product Name -->
-					<h3 class="text-center my-5" th:text="${coffeeModel.name}">Coffee</h3>
+					<h3 class="text-center my-5" th:text="${blogModel.authorName}">Author Name</h3>
 					
-					<!-- Company Name -->
+
 					<div class="form-row my-3">
 						<div class="col">
-							<h6>Company Name:</h6>
-							<h5 th:text="${coffeeModel.companyName}"></h5>
+							<h6>Blog Title:</h6>
+							<h5 th:text="${blogModel.title}"></h5>
 						</div>
 					</div>
-					
-					<!-- Company Location -->
+
 					<div class="form-row my-3">
 						<div class="col">
-							<h6>Company Location:</h6>
-							<h5 th:text="${coffeeModel.companyLocation}"></h5>
+							<h6>Introduction:</h6>
+							<p th:text="${blogModel.introduction}"></p>
 						</div>
 					</div>
-					
-					<!-- Cost of Product -->
+
 					<div class="form-row my-3">
 						<div class="col">
-							<h6>Cost:</h5>
-							<h5 th:text="${coffeeModel.cost}"></h6>
+							<h5>Body:</h5>
+							<p th:text="${blogModel.body}"></p>
 						</div>
 					</div>
-					
-					<!-- Description of product -->
+
 					<div class="form-row my-3">
 						<div class="col">
-							<h6>Description:</h6>
-							<h5 th:text="${coffeeModel.description}"></h5>
+							<h6>Concluision: </h6>
+							<p th:text="${blogModel.conclusion}"></p>
 						</div>
 					</div>
 

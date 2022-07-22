@@ -6,8 +6,8 @@
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="container">
 				<a href="\" class="navbar-brand">
-					<i class="bi bi-cup"></i>
-					<span class="d-md-none">The Coffee Stop</span>
+					<i class="bi bi-book-half"></i>
+					<span class="d-md-none">Blogger</span>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar">
 					<span class="navbar-toggler-icon"></span>
@@ -18,11 +18,11 @@
 							<div th:if="${session.user != null}" class="dropdown show">
 								<a class="nav-link dropdown-toggle text-white px-0" href="#" role="button"
 									id="dropdownMenuLink" data-toggle="dropdown">
-									Coffee
+									Blog
 								</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/coffee/">All Coffee</a>
-									<a class="dropdown-item" href="/coffee/addCoffee">Add Coffee</a>
+									<a class="dropdown-item" href="/blog/">All Blogs</a>
+									<a class="dropdown-item" href="/blog/createBlog">Add Blog</a>
 								</div>
 							</div>
 						</li>
@@ -57,7 +57,7 @@
 			</div>
 		</nav>
 		<div class="jumbotron jumbotron fluid">
-			<h1 class="text-center d-none d-md-block">The Coffee Stop</h1>
+			<h1 class="text-center d-none d-md-block">Blogger</h1>
 		</div>
 	</div>
 

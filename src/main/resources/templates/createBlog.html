@@ -1,10 +1,104 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div layout:fragment="content">
+    <div class="container body-content">
+        <div class="container border border-info rounded p-s5 my-5" style="max-width: 400px;">
+            <h3 class="text-center my-5">Add New Blog</h3>
+
+            <!-- Insert th:action th:object for routing -->
+            <form th:action="@{doAddBlog}" th:object="${blogModel}" method="POST">
+
+                <!-- Insert th:field for Author Name -->
+                <div class="form-row my-2">
+                    <div class="col">
+                        <input th:class="form-control" th:field="*{authorName}" type="text" placeholder="Author Name"
+                               required>
+                    </div>
+                </div>
+
+                <div class="form-row my-3">
+                    <div class="col">
+                        <h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('authorName')}"
+                            th:errors="*{authorName}" />
+                    </div>
+                </div>
+
+                <!-- Insert th:field for Title -->
+                <div class="form-row my-3">
+                    <div class="col">
+                        <input class="form-control" th:field="*{title}" type="text" placeholder="Title"
+                               required>
+                    </div>
+                </div>
+
+
+                <div class="form-row my-3">
+                    <div class="col">
+                        <h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('title')}"
+                            th:errors="*{title}" />
+                    </div>
+                </div>
+
+
+                <div class="form-row my-3">
+                    <div class="col">
+                        <textarea rows="10" cols="100" class="form-control" th:field="*{introduction}" type="text"
+                                  placeholder="Blog Introduction" required></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-row my-3">
+                    <div class="col">
+                        <h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('introduction')}"
+                            th:errors="*{introduction}" />
+                    </div>
+                </div>
+
+                <!-- Insert th:field for description -->
+                <div class="form-row my-3">
+                    <div class="col">
+							<textarea rows="10" cols="100" class="form-control" th:field="*{body}" type="text" placeholder="Blog Body"
+                                      required /></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-row my-3">
+                    <div class="col">
+                        <h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('body')}"
+                            th:errors="*{body}" />
+                    </div>
+                </div>
+
+                <!-- Insert th:field for conclusion -->
+                <div class="form-row my-3">
+                    <div class="col">
+							<textarea rows="10" cols="100" class="form-control" th:field="*{conclusion}" th:type="text" placeholder="Blog Conclusion"
+                                      required /></textarea>
+                    </div>
+                </div>
+
+                <!-- Insert th:if and th:error for description error catching if required -->
+                <div class="form-row my-3">
+                    <div class="col">
+                        <h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('conclusion')}"
+                            th:errors="*{conclusion}" />
+                    </div>
+                </div>
+
+                <input type="submit" value="Add" class="btn btn-info btn-block btn-lg my-4">
+            </form>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

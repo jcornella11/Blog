@@ -6,93 +6,92 @@
 	<div layout:fragment="content">
 		<div class="container body-content">
 			<div class="container border border-info rounded p-s5 my-5" style="max-width: 400px;">
-				<h3 class="text-center my-5">Update Coffee</h3>
+				<h3 class="text-center my-5">Update Blog</h3>
 
 				<!-- Insert th:action th:object for routing -->
-				<form th:action="@{/coffee/doUpdateCoffee}" th:object="${coffeeModel}" method="POST">
+				<form th:action="@{/blog/doUpdateBlog}" th:object="${blogModel}" method="POST">
 
-					<!-- Insert th:field for name -->
-					<div class="form-row my-2">
-						<div class="col">
-							<input th:class="form-control" th:field="*{name}" type="text" placeholder="Coffee Name"
-								required>
-						</div>
-					</div>
+					<!-- Insert th:action th:object for routing -->
+					<form th:action="@{doAddBlog}" th:object="${blogModel}" method="POST">
 
-					<!-- Insert th:if and th:error for name error catching if required -->
-					<div class="form-row my-3">
-						<div class="col">
-							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('name')}"
-								th:errors="*{name}" />
+						<!-- Insert th:field for Author Name -->
+						<div class="form-row my-2">
+							<div class="col">
+								<input th:class="form-control" th:field="*{authorName}" type="text" placeholder="Author Name"
+									   required>
+							</div>
 						</div>
-					</div>
 
-					<!-- Insert th:field for companyName -->
-					<div class="form-row my-3">
-						<div class="col">
-							<input class="form-control" th:field="*{companyName}" type="text" placeholder="Company Name"
-								required>
+						<div class="form-row my-3">
+							<div class="col">
+								<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('authorName')}"
+									th:errors="*{authorName}" />
+							</div>
 						</div>
-					</div>
 
-					<!-- Insert th:if and th:error for companyName error catching if required -->
-					<div class="form-row my-3">
-						<div class="col">
-							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('companyName')}"
-								th:errors="*{companyName}" />
+						<!-- Insert th:field for Title -->
+						<div class="form-row my-3">
+							<div class="col">
+								<input class="form-control" th:field="*{title}" type="text" placeholder="Title"
+									   required>
+							</div>
 						</div>
-					</div>
 
-					<!-- Insert th:field for companyLocation -->
-					<div class="form-row my-3">
-						<div class="col">
-							<input class="form-control" th:field="*{companyLocation}" type="text"
-								placeholder="Company Location" required>
-						</div>
-					</div>
 
-					<!-- Insert th:if and th:error for companyLocation error catching if required -->
-					<div class="form-row my-3">
-						<div class="col">
-							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('companyLocation')}"
-								th:errors="*{companyLocation}" />
+						<div class="form-row my-3">
+							<div class="col">
+								<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('title')}"
+									th:errors="*{title}" />
+							</div>
 						</div>
-					</div>
 
-					<!-- Insert th:field for cost -->
-					<div class="form-row my-3">
-						<div class="col">
-							<label class="my-1" for="cost">Cost Per lb.</label>
-						</div>
-						<div class="col">
-							<input class="form-control" th:field="*{cost}" type="text" placeholder="Cost per lb."
-								required/>
-						</div>
-					</div>
 
-					<!-- Insert th:if and th:error for cost error catching if required -->
-					<div class="form-row my-3">
-						<div class="col">
-							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('cost')}"
-								th:errors="*{cost}" />
+						<div class="form-row my-3">
+							<div class="col">
+                        <textarea rows="10" cols="100" class="form-control" th:field="*{introduction}" type="text"
+								  placeholder="Blog Introduction" required></textarea>
+							</div>
 						</div>
-					</div>
 
-					<!-- Insert th:field for description -->
-					<div class="form-row my-3">
-						<div class="col">
-							<textarea class="form-control" th:field="*{description}" placeholder="Coffee Description"
-								required />
-						</div>
-					</div>
 
-					<!-- Insert th:if and th:error for description error catching if required -->
-					<div class="form-row my-3">
-						<div class="col">
-							<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('description')}"
-								th:errors="*{description}" />
+						<div class="form-row my-3">
+							<div class="col">
+								<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('introduction')}"
+									th:errors="*{introduction}" />
+							</div>
 						</div>
-					</div>
+
+						<!-- Insert th:field for description -->
+						<div class="form-row my-3">
+							<div class="col">
+							<textarea rows="10" cols="100" class="form-control" th:field="*{body}" type="text" placeholder="Blog Body"
+									  required /></textarea>
+							</div>
+						</div>
+
+
+						<div class="form-row my-3">
+							<div class="col">
+								<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('body')}"
+									th:errors="*{body}" />
+							</div>
+						</div>
+
+						<!-- Insert th:field for conclusion -->
+						<div class="form-row my-3">
+							<div class="col">
+							<textarea rows="10" cols="100" class="form-control" th:field="*{conclusion}" th:type="text" placeholder="Blog Conclusion"
+									  required /></textarea>
+							</div>
+						</div>
+
+						<!-- Insert th:if and th:error for description error catching if required -->
+						<div class="form-row my-3">
+							<div class="col">
+								<h6 style="color: red; text-align:left" th:if="${#fields.hasErrors('conclusion')}"
+									th:errors="*{conclusion}" />
+							</div>
+						</div>
 					<input type="hidden" th:field="*{id}">
 					<input type="submit" value="Update" class="btn btn-info btn-block btn-lg my-4">
 				</form>

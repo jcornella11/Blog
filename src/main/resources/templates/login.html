@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+
 <body>
-$END$
+<div layout:fragment="content">
+    <div class="container body-content">
+        <div class="container border border-info rounded p-s5 my-5" style="max-width: 400px;">
+            <h3 class="text-center my-5">Login</h3>
+
+            <!-- Insert th:action th:object for routing -->
+            <form th:action="@{/login/}" method="POST">
+
+                <!-- Insert th:field for username -->
+                <div class="form-row my-3">
+                    <div class="col">
+                        <input th:class="form-control" name="username" id="username" type="text" placeholder="Username" required>
+                    </div>
+                </div>
+
+
+                <!-- Insert th:field for password -->
+                <div class="form-row my-3">
+                    <div class="col">
+                        <input class="form-control" name="password" id="password" type="password" placeholder="Password" required>
+                    </div>
+                </div>
+
+                <!-- Insert th:if and th:error for password error catching if required -->
+                <div class="form-row my-3">
+                    <div class="col">
+                        <h6 style="color: red; text-align:left" th:if="${param.error}">Invalid Username/Password Combo</h6>
+                    </div>
+                </div>
+                <input type="submit" value="Login" class="btn btn-info btn-block btn-lg my-4">
+
+            </form>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
