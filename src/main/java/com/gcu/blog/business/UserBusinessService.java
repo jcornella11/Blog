@@ -3,6 +3,8 @@ package com.gcu.blog.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gcu.blog.BlogApplication;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +22,8 @@ import com.gcu.blog.data.UserDataService;
 @Component
 public class UserBusinessService implements UserDetailsService {
 
+    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+
     @Autowired
     UserDataService service;
 
@@ -36,6 +40,8 @@ public class UserBusinessService implements UserDetailsService {
 
         // Attempt insertion of UserEntity into database with UserDataService
         // Return boolean indicating success or failure
+
+        logger.info("Inside the addUser Method of the User Data Service");
         return service.create(entity);
     }
 
@@ -43,6 +49,8 @@ public class UserBusinessService implements UserDetailsService {
 
         // Call service and return user by username
         UserEntity user = service.findByUserName(username);
+
+        logger.info("Inside the loadUserByUSername Method of the User Data Service");
 
         // If user found add authorities of "USER"
         if(user != null)

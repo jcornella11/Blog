@@ -2,6 +2,8 @@ package com.gcu.blog.data;
 
 import java.util.List;
 
+import com.gcu.blog.BlogApplication;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,8 @@ import com.gcu.blog.data.repository.UserRepository;
 
 @Service
 public class UserDataService implements DataAccessInterface<UserEntity> {
+
+    private final static Logger logger = Logger.getLogger(BlogApplication.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -29,6 +33,8 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
             e.printStackTrace();
             return false;
         }
+
+        logger.info("Inside the Create Method of the UserDataService");
         return true;
     }
 
@@ -58,6 +64,7 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
 
     public UserEntity findByUserName(String username) {
         // Attempt to find user by username
+        logger.info("Inside the find by UserName Method of the UserDataService");
         return userRepository.findByUserName(username);
     }
 }

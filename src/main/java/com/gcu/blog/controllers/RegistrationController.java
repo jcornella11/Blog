@@ -1,6 +1,8 @@
 package com.gcu.blog.controllers;
 
+import com.gcu.blog.BlogApplication;
 import com.gcu.blog.business.UserBusinessService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class RegistrationController {
 
+    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+
     @Autowired
     UserBusinessService service;
 
@@ -26,6 +30,8 @@ public class RegistrationController {
     {
         model.addAttribute("title", "Register");
         model.addAttribute("userModel", new UserModel());
+
+        logger.info("Inside the Register Method of the Registration Controller");
 
         return "register";
     }
@@ -48,6 +54,8 @@ public class RegistrationController {
 
         // Get user service and add new user
         service.addUser(userModel);
+
+        logger.info("Inside the doRegister Method of the Registration Controller");
 
         return "login";
 

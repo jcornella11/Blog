@@ -2,6 +2,9 @@ package com.gcu.blog.business;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.gcu.blog.BlogApplication;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gcu.blog.data.BlogDataService;
@@ -10,6 +13,8 @@ import com.gcu.blog.models.BlogModel;
 
 
 public class BlogBusinessService implements BlogBusinessInterface{
+
+    private final static Logger logger = Logger.getLogger(BlogApplication.class);
 
     @Autowired
     private BlogDataService service;
@@ -32,6 +37,8 @@ public class BlogBusinessService implements BlogBusinessInterface{
                     entity.getConclusion()));
         }
 
+        logger.info("Inside the Get Blog Method of the Blog Business Service");
+
         return blogDomain;
     }
 
@@ -43,6 +50,9 @@ public class BlogBusinessService implements BlogBusinessInterface{
                 blogModel.getIntroduction(),
                 blogModel.getBody(),
                 blogModel.getConclusion());
+
+        logger.info("Inside the Add Blog Method of the Blog Business Service");
+
         return service.create(entity);
     }
 
@@ -50,6 +60,8 @@ public class BlogBusinessService implements BlogBusinessInterface{
     public BlogModel getBlogById(int id)
     {
         BlogEntity entity = service.findById(id);
+
+        logger.info("Inside the getBlogById Method of the Blog Business Service");
 
         return new BlogModel(entity.getId(),
                 entity.getAuthorName(),
@@ -69,6 +81,8 @@ public class BlogBusinessService implements BlogBusinessInterface{
                 blogModel.getIntroduction(),
                 blogModel.getBody(),
                 blogModel.getConclusion());
+
+        logger.info("Inside the deleteBlogById Method of the Blog Business Service");
         return service.delete(entity);
     }
 
@@ -82,6 +96,9 @@ public class BlogBusinessService implements BlogBusinessInterface{
                 blogModel.getIntroduction(),
                 blogModel.getBody(),
                 blogModel.getConclusion());
+
+        logger.info("Inside the updateBlog Method of the Blog Business Service");
+
         return service.update(entity);
     }
 

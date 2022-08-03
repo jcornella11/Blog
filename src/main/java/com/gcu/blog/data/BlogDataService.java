@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.gcu.blog.BlogApplication;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import com.gcu.blog.data.repository.BlogRepository;
 
 @Service
 public class BlogDataService implements DataAccessInterface<BlogEntity>{
+
+    private final static Logger logger = Logger.getLogger(BlogApplication.class);
 
     @Autowired
     private BlogRepository blogRepository;
@@ -35,6 +39,8 @@ public class BlogDataService implements DataAccessInterface<BlogEntity>{
         {
             e.printStackTrace();
         }
+
+        logger.info("Inside the find all Method of the BlogDataService");
         return blogs;
     }
 
@@ -42,6 +48,8 @@ public class BlogDataService implements DataAccessInterface<BlogEntity>{
     public BlogEntity findById(int id)
     {
         Optional<BlogEntity> blog = blogRepository.findById((long) id);
+
+        logger.info("Inside the findbyID Method of the BlogDataService");
 
         return blog.get();
     }
@@ -57,6 +65,8 @@ public class BlogDataService implements DataAccessInterface<BlogEntity>{
             e.printStackTrace();
             return false;
         }
+
+        logger.info("Inside the create Method of the BlogDataService");
         return true;
     }
 
@@ -72,6 +82,8 @@ public class BlogDataService implements DataAccessInterface<BlogEntity>{
             e.printStackTrace();
             return false;
         }
+
+        logger.info("Inside the update Method of the BlogDataService");
         return true;
     }
 
@@ -87,6 +99,8 @@ public class BlogDataService implements DataAccessInterface<BlogEntity>{
             e.printStackTrace();
             return false;
         }
+
+        logger.info("Inside the Delete Method of the BlogDataService");
         return true;
     }
 

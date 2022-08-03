@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.gcu.blog.BlogApplication;
 import com.gcu.blog.business.BlogBusinessInterface;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +25,8 @@ import com.gcu.blog.models.BlogModel;
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
+
+    private final static Logger logger = Logger.getLogger(BlogApplication.class);
 
     @Autowired
     private BlogBusinessInterface blogService;
@@ -48,6 +52,8 @@ public class BlogController {
         model.addAttribute("title", "Blogs");
         model.addAttribute("blogList", blogList);
 
+        logger.info("Inside the blogs Method of the Blog Controller");
+
         return "blogs";
     }
 
@@ -57,6 +63,8 @@ public class BlogController {
 
         model.addAttribute("title", "Add New Blog");
         model.addAttribute("blogModel", new BlogModel());
+
+        logger.info("Inside the create Blog Method of the Blog Controller");
 
         return "createBlog";
     }
@@ -70,6 +78,8 @@ public class BlogController {
 
         model.addAttribute("title", "Display Blog");
         model.addAttribute("blogModel", blog);
+
+        logger.info("Inside the Display blogs Method of the Blog Controller");
 
         return "displayBlog";
     }
@@ -90,6 +100,8 @@ public class BlogController {
         model.addAttribute("title", "Blog");
         model.addAttribute("blogList", blogList);
 
+        logger.info("Inside the do Add blogs Method of the Blog Controller");
+
         return "blogs";
     }
 
@@ -100,6 +112,8 @@ public class BlogController {
 
         blogService.deleteBlog(blog);
 
+        logger.info("Inside the Do Delete blogs Method of the Blog Controller");
+
         return "redirect:/blogs/";
     }
 
@@ -109,6 +123,8 @@ public class BlogController {
         BlogModel blog = blogService.getBlogById(id);
 
         model.addAttribute("blogModel", blog);
+
+        logger.info("Inside the update blogs Method of the Blog Controller");
 
         return "updateBlog";
     }
@@ -129,6 +145,8 @@ public class BlogController {
 
         model.addAttribute("title", "Blog");
         model.addAttribute("blogList", blogList);
+
+        logger.info("Inside the do Update blogs Method of the Blog Controller");
 
         return "blogs";
     }
