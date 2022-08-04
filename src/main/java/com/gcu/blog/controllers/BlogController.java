@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import com.gcu.blog.BlogApplication;
 import com.gcu.blog.business.BlogBusinessInterface;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,11 +21,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.blog.models.BlogModel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
 
-    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+    private static final Logger logger = LogManager.getLogger(BlogController.class);
 
     @Autowired
     private BlogBusinessInterface blogService;

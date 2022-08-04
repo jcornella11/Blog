@@ -2,7 +2,6 @@ package com.gcu.blog.controllers;
 
 import com.gcu.blog.BlogApplication;
 import com.gcu.blog.business.UserBusinessService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.gcu.blog.models.UserModel;
 
 import javax.validation.Valid;
@@ -20,7 +22,7 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class RegistrationController {
 
-    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+    private static final Logger logger = LogManager.getLogger(RegistrationController.class);
 
     @Autowired
     UserBusinessService service;

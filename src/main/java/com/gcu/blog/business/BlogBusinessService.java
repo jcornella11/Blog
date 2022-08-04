@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gcu.blog.BlogApplication;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gcu.blog.data.BlogDataService;
 import com.gcu.blog.data.entity.BlogEntity;
 import com.gcu.blog.models.BlogModel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class BlogBusinessService implements BlogBusinessInterface{
 
-    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+    private static final Logger logger = LogManager.getLogger(BlogBusinessService.class);
 
     @Autowired
     private BlogDataService service;

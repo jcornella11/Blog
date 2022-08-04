@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gcu.blog.BlogApplication;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,10 +18,13 @@ import com.gcu.blog.data.entity.UserEntity;
 import com.gcu.blog.models.UserModel;
 import com.gcu.blog.data.UserDataService;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Component
 public class UserBusinessService implements UserDetailsService {
 
-    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+    private static final Logger logger = LogManager.getLogger(UserBusinessService.class);
 
     @Autowired
     UserDataService service;

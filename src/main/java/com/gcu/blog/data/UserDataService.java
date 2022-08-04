@@ -3,17 +3,19 @@ package com.gcu.blog.data;
 import java.util.List;
 
 import com.gcu.blog.BlogApplication;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gcu.blog.data.entity.UserEntity;
 import com.gcu.blog.data.repository.UserRepository;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Service
 public class UserDataService implements DataAccessInterface<UserEntity> {
 
-    private final static Logger logger = Logger.getLogger(BlogApplication.class);
+    private final static Logger logger = LogManager.getLogger(UserDataService.class);
 
     @Autowired
     private UserRepository userRepository;
