@@ -18,7 +18,6 @@ import com.gcu.blog.models.BlogList;
 @RequestMapping("/service")
 public class BlogRestService
 {
-    //update
     @Autowired
     private BlogBusinessInterface service;
 
